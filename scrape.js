@@ -19,9 +19,7 @@ const download_image = (url, image_path) => axios({
 
 
 (async function() {
-  const browser = await puppeteer.launch({
-    headless: false,
-  });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(siteURL);
 
@@ -51,7 +49,7 @@ const download_image = (url, image_path) => axios({
   });
   await browser.close();
 
-  await Promise.all(imageURLs.map((url, index) => download_image(url, `background${index}.jpg`)));
+  await Promise.all(imageURLs.map((url, index) => download_image(url, `images/background${index}.jpg`)));
 
 })();
 
